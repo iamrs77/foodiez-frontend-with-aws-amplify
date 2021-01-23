@@ -1,0 +1,47 @@
+type Vendor @model 
+@key(name: "vendorByUserid", fields: ["userId"], queryField: "vendorByUserid") 
+@auth(rules: [{ allow: owner, operations: [create, delete, update] }])
+{
+    id: ID!
+    name: String!
+    foodType: String!
+    minPrice: Float!
+    location: String!
+    deliveryTime: String!
+    userId: String!
+    image: S3Object
+}
+
+type FoodItem @model 
+@key(name: "foodItemByVendorid", fields: ["vendorId"], queryField: "foodItemByVendorid") 
+@auth(rules: [{ allow: groups, groups:["vendor"], operations: [create, delete, update] }])
+{
+    id: ID!
+    rating: String
+    name: String!
+    description: String!
+    foodType: String!
+    cost: Float!
+    vendorId: String!
+    image: S3Object
+}
+
+type CartItem @model 
+@key(name: "cartItemByDate", fields: ["type", "createdAt"], queryField: "cartItemByDate")
+@key(name: "cartItemByStatus", fields: ["status"], queryField: "cartItemByStatus") 
+@auth(rules: [{ allow: owner }])
+{
+    id: ID!
+    status: String!
+    foodItem: FoodItem @connection
+    userId: String!
+    type: String!
+    createdAt: String!
+}
+
+type S3Object {
+    bucket: String!
+    region: String!
+    key: String!
+}
+

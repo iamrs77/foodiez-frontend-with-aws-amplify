@@ -1,0 +1,28 @@
+.vendor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.vendor__button{
+    display: block;
+    box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.3);
+}
+
+.reg__button{
+    margin-top: 0 !important;
+}
+
+.code__confirmButton{
+    margin-top: 30px;
+}
+
+.code__confirmButton a {
+    color: black;
+    text-decoration: none;
+}
+
+.code__confirmButton:hover {
+    cursor: pointer;
+}

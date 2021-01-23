@@ -1,0 +1,33 @@
+{
+  "auth": {
+    "foodiezfrontendcfd2ad2b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "api": {
+    "foodiezfrontend": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authfoodiezfrontendcfd2ad2b"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  },
+  "storage": {
+    "s362da37c8": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}
